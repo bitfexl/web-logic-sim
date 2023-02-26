@@ -1,8 +1,8 @@
 <script lang="ts">
-    import GridItem from "./lib/grid/GridItem.svelte";
-    import GridPane from "./lib/grid/GridPane.svelte";
+    import GridItem from "./lib/layout/grid/GridItem.svelte";
+    import GridPane from "./lib/layout/grid/GridPane.svelte";
     import SvgTest from "./lib/svg/SVGTest.svelte";
-    import ZoomablePane from "./lib/ZoomablePane.svelte";
+    import ZoomablePane from "./lib/layout/ZoomablePane.svelte";
 
     let zoom = 1;
 </script>
