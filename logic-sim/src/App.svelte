@@ -3,6 +3,9 @@
     import GridPane from "./lib/layout/grid/GridPane.svelte";
     import SvgTest from "./lib/svg/SVGTest.svelte";
     import ZoomablePane from "./lib/layout/ZoomablePane.svelte";
+    import { test as logicTest } from "./lib/logic/logicTest";
+
+    logicTest();
 
     let zoom = 1;
 </script>
