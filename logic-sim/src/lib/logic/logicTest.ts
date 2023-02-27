@@ -15,7 +15,7 @@ export function test() {
     log(truthTable(and));
 
     and.output.connectTo(not.input);
-    let nand = createLogicCompoenent(and.getInputs(), not.getOutputs());
+    let nand = createLogicCompoenent("NAND", and.getInputs(), not.getOutputs());
 
     log("NAND:");
     log(truthTable(nand));
@@ -26,7 +26,7 @@ export function test() {
     inNotB.input.name = "B";
     inNotA.output.connectTo(nand.getInputs()[0]);
     inNotB.output.connectTo(nand.getInputs()[1]);
-    let or = createLogicCompoenent([inNotA.input, inNotB.input], nand.getOutputs());
+    let or = createLogicCompoenent("OR", [inNotA.input, inNotB.input], nand.getOutputs());
 
     log("OR:");
     log(truthTable(or));
