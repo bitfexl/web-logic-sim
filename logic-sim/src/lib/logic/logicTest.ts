@@ -1,4 +1,4 @@
-import { AndComponent, NotComponent, type LogicComponent } from "./logic";
+import { AndComponent, createLogicCompoenent, NotComponent, type LogicComponent } from "./logic";
 
 export function test() {
     let log = console.log;
@@ -13,6 +13,23 @@ export function test() {
 
     log("AND:");
     log(truthTable(and));
+
+    and.output.connectTo(not.input);
+    let nand = createLogicCompoenent(and.getInputs(), not.getOutputs());
+
+    log("NAND:");
+    log(truthTable(nand));
+
+    let inNotA = new NotComponent();
+    inNotA.input.name = "A";
+    let inNotB = new NotComponent();
+    inNotB.input.name = "B";
+    inNotA.output.connectTo(nand.getInputs()[0]);
+    inNotB.output.connectTo(nand.getInputs()[1]);
+    let or = createLogicCompoenent([inNotA.input, inNotB.input], nand.getOutputs());
+
+    log("OR:");
+    log(truthTable(or));
 }
 
 function truthTable(component: LogicComponent): string {

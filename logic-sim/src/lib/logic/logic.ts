@@ -126,3 +126,43 @@ export class AndComponent implements LogicComponent {
         return [this.output];
     }
 }
+
+export class ClonableComponent implements LogicComponent {
+    getInputs: () => Input[];
+    getOutputs: () => Output[];
+
+    clone(): ClonableComponent {
+        // todo: implement
+        return null;
+    }
+}
+
+export function createLogicCompoenent(inputs: Input[], outputs: Output[]): LogicComponent {
+    return {
+        getInputs() {
+            return [...inputs];
+        },
+
+        getOutputs() {
+            return [...outputs];
+        },
+    };
+}
+
+export function clone(component: LogicComponent): LogicComponent {
+    // let connectedInputs = component.getInputs().filter((i) => i.getProvider() != null);
+    // if (connectedInputs.length != 0) {
+    //     // do something (find root component)
+    //     throw new Error("Provided component does not appear to be a root component.");
+    // }
+
+    if (component instanceof NotComponent) {
+        return new NotComponent();
+    } else if (component instanceof AndComponent) {
+        return new AndComponent();
+    } else if (component instanceof ClonableComponent) {
+        return component.clone();
+    }
+
+    throw new Error("Component not clonable.");
+}
