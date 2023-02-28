@@ -13,7 +13,7 @@
 <main>
     <div style="width: 600px; height: 600px">
         <ZoomablePane {zoom}>
-            <GridPane cellWidth={50}>
+            <GridPane cellWidth={25} showGrid={true} gridColor={"lightGray"} draggingEnabled={true} draggingSpeed={1 / zoom}>
                 <GridItem x={12} y={0}>
                     <p>I am an item!</p>
                 </GridItem>
