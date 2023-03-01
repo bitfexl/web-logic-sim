@@ -16,6 +16,7 @@
 
     export let draggingEnabled = false;
     export let draggingSpeed = 1;
+    export let draggingMouseBtn = 0;
 
     // dragging
     let dragging = false;
@@ -86,7 +87,7 @@
 
         if (e.type == "mouseup" || e.type == "mouseleave") {
             dragging = false;
-        } else if (draggingEnabled && e.type == "mousedown" && e.button == 0) {
+        } else if (draggingEnabled && e.type == "mousedown" && e.button == draggingMouseBtn) {
             dragging = true;
         } else if (dragging && e.type == "mousemove") {
             let xDelta = e.movementX * draggingSpeed;
@@ -140,6 +141,7 @@
     on:mousemove={onMouse}
     on:mouseup={onMouse}
     on:mouseleave={onMouse}
+    on:contextmenu|preventDefault={() => {}}
 >
     <canvas class="bgCanvas" bind:this={backgroundCanvas} />
     <slot />
