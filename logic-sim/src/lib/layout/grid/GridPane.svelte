@@ -79,6 +79,19 @@
         drawBackgroundGrid();
     }
 
+    /**
+     * Get the cell at the given pixel.
+     * @param xOffset The offset relative to the x coordinate of the grid.
+     * @param yOffset The offset relaitve to the y cooridnate of the grid.
+     * @returns The x and y coordinate of the grid cell.
+     */
+    export function getCell(xOffset: number, yOffset: number): { x: number; y: number } {
+        return {
+            x: Math.floor((xOffset - $itemOriginOffsetX) / cellWidth),
+            y: Math.floor((yOffset - $itemOriginOffsetY) / cellWidth),
+        };
+    }
+
     function onMouse(e) {
         // handle mouse evnets (drag)
         if (e.target != gridDiv) {
@@ -93,8 +106,8 @@
             let xDelta = e.movementX * draggingSpeed;
             let yDelta = e.movementY * draggingSpeed;
 
-            itemOriginOffsetX.update((x) => x + xDelta);
-            itemOriginOffsetY.update((y) => y + yDelta);
+            $itemOriginOffsetX += xDelta;
+            $itemOriginOffsetY += yDelta;
 
             gridOffsetX += xDelta;
             gridOffsetY += yDelta;

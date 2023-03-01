@@ -8,21 +8,30 @@
 
     logicTest();
 
+    let gridPane;
+    let gridPaneDiv: HTMLElement;
+    let item: HTMLElement;
+
     let zoom = 1;
 
     function gridDrag(e) {
         e.detail.setElementOffset(e.detail.offsetX - (e.detail.offsetX % 25), e.detail.offsetY - (e.detail.offsetY % 25));
+        let rectItem = item.getBoundingClientRect();
+        let rectDiv = gridPaneDiv.getBoundingClientRect();
+        let cell = gridPane.getCell(rectItem.x - rectDiv.x, rectItem.y - rectDiv.y);
+        console.log(cell);
     }
 </script>
 
 <main>
     <Draggable on:dragging={gridDrag}>
-        <p>I am draggable!</p>
+        <p bind:this={item}>I am draggable!</p>
     </Draggable>
 
-    <div style="width: 600px; height: 600px">
+    <div bind:this={gridPaneDiv} style="width: 600px; height: 600px">
         <ZoomablePane {zoom}>
             <GridPane
+                bind:this={gridPane}
                 cellWidth={25}
                 showGrid={true}
                 gridColor={"lightGray"}

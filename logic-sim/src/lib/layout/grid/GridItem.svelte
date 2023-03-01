@@ -11,11 +11,8 @@
 
     const gridContext: { cellWidth: number; offsetX: Writable<number>; offsetY: Writable<number> } = getContext(GRID_CONTEXT_KEY);
 
-    let offsetX = 0;
-    let offsetY = 0;
-
-    gridContext.offsetX.subscribe((x) => (offsetX = x));
-    gridContext.offsetY.subscribe((y) => (offsetY = y));
+    let offsetX = gridContext.offsetX;
+    let offsetY = gridContext.offsetY;
 
     function handleDrag(e) {
         // todo: dragging speed (zoomed), scoll pane on drag
@@ -32,7 +29,7 @@
 </script>
 
 {#if hasContext(GRID_CONTEXT_KEY)}
-    <div style="top: {y * gridContext.cellWidth + offsetY}px; left: {x * gridContext.cellWidth + offsetX}px">
+    <div style="top: {y * gridContext.cellWidth + $offsetY}px; left: {x * gridContext.cellWidth + $offsetX}px">
         {#if draggable}
             <Draggable on:dragging={handleDrag} on:stopdragging={handleDragEnd}>
                 <slot />
