@@ -4,13 +4,22 @@
     import SvgTest from "./lib/svg/SVGTest.svelte";
     import ZoomablePane from "./lib/layout/ZoomablePane.svelte";
     import { test as logicTest } from "./lib/logic/logicTest";
+    import Draggable from "./lib/layout/draggable/Draggable.svelte";
 
     logicTest();
 
     let zoom = 1;
+
+    function gridDrag(e) {
+        e.detail.setElementOffset(e.detail.offsetX - (e.detail.offsetX % 25), e.detail.offsetY - (e.detail.offsetY % 25));
+    }
 </script>
 
 <main>
+    <Draggable on:dragging={gridDrag}>
+        <p>I am draggable!</p>
+    </Draggable>
+
     <div style="width: 600px; height: 600px">
         <ZoomablePane {zoom}>
             <GridPane
