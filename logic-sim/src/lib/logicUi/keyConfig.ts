@@ -1,0 +1,1 @@
+export const WORKSPACE_DRAG_MOUSE_BTN = 0;
