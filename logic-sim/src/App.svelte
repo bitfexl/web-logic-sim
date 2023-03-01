@@ -30,10 +30,10 @@
                 draggingMouseBtn={2}
                 draggingSpeed={1 / zoom}
             >
-                <GridItem x={12} y={0}>
-                    <p>I am an item!</p>
+                <GridItem x={12} y={0} draggable={true}>
+                    <p style="user-select: none">I am an item!</p>
                 </GridItem>
-                <GridItem x={10} y={0}>
+                <GridItem x={10} y={0} draggable={true}>
                     <SvgTest />
                 </GridItem>
             </GridPane>

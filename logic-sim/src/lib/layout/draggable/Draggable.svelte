@@ -17,7 +17,7 @@
         elementOffsetY;
 
     function onMouse(e) {
-        if (e.type == "mouseup" || e.type == "mouseleave") {
+        if (dragging && (e.type == "mouseup" || e.type == "mouseleave")) {
             dragging = false;
 
             dispatch("stopdragging", {
