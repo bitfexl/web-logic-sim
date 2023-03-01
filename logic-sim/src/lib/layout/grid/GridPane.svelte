@@ -138,7 +138,7 @@
             ctx2d.lineTo(i, gridHeight);
         }
 
-        for (let i = gridOffsetY; i <= gridWidth; i += cellWidth) {
+        for (let i = gridOffsetY; i <= gridHeight; i += cellWidth) {
             ctx2d.moveTo(0, i);
             ctx2d.lineTo(gridWidth, i);
         }
