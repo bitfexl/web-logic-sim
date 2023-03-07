@@ -24,8 +24,8 @@
         <FullWorkSpace />
     </div>
 
-    <input type="range" min="0.5" max="1.5" step="0.1" bind:value={zoom} />
-    {zoom}
+    <!-- <input type="range" min="0.5" max="1.5" step="0.1" bind:value={zoom} /> -->
+    <!-- {zoom} -->
 </main>
 
 <style lang="scss">

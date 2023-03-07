@@ -2,11 +2,12 @@
     import GridItem from "../layout/grid/GridItem.svelte";
     import GridPane from "../layout/grid/GridPane.svelte";
     import ZoomablePane from "../layout/ZoomablePane.svelte";
+    import { AndComponent, NotComponent } from "../logic/logic";
     import { WORKSPACE_DRAG_MOUSE_BTN } from "./keyConfig";
 
     export let zoom = 1;
 
-    export let items: { x: number; y: number; component: ConstructorOfATypedSvelteComponent }[] = [];
+    export let items: { x: number; y: number; component: ConstructorOfATypedSvelteComponent; key: symbol }[] = [];
 
     let gridPane;
 </script>
@@ -22,9 +23,9 @@
             draggingMouseBtn={WORKSPACE_DRAG_MOUSE_BTN}
             draggingSpeed={1 / zoom}
         >
-            {#each items as item (item.component)}
+            {#each items as item (item.key)}
                 <GridItem x={item.x} y={item.y} draggable={true}>
-                    <svelte:component this={item.component} />
+                    <svelte:component this={item.component} component={new NotComponent()} />
                 </GridItem>
             {/each}
 
